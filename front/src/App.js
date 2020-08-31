@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
   super(props);
 
-  this.setupReader()
+  //this.setupReader()
   
 	this.state = {
   	name: '',
@@ -15,11 +15,11 @@ class App extends React.Component {
     message: '',
     phone: '',
     gdpr: false,
-    selectedFile: undefined,
+    /*selectedFile: undefined,
     imageBase64: '',
     initialImageBase64: '',
     pending: false,
-    status: 'INIT',
+    status: 'INIT',*/
 	} 
   }
 
@@ -45,10 +45,10 @@ render() {
       <input type="text" value={this.state.phone} onChange={this.onPhoneChange.bind(this)} />
     </div>
 
-    <div className="form-group">
+    {/**<div className="form-group">
       <label>Select an image</label>
       <input type="file" accept=".jpg, .png, .jpeg" onChange={this.onFileChange} />
-    </div>
+    </div>**/}
 
     <div className="form-group">
       <label>gdpr</label>
@@ -61,6 +61,7 @@ render() {
  );
 }
 
+/*
 setupReader() {
   this.reader = new FileReader();
   this.reader.addEventListener('load', (event) => {
@@ -91,6 +92,7 @@ setupReader() {
  this.reader.readAsDataURL(selectedFile);
   }
   }
+  */
 
   onNameChange(event) {
 	  this.setState({name: event.target.value})
@@ -102,7 +104,6 @@ setupReader() {
 
   onMessageChange(event) {
     this.setState({message: event.target.value})
-    console.log('yolo');
   }
 
   onPhoneChange(event) {
@@ -132,7 +133,7 @@ setupReader() {
   }
 
   resetForm(){  
-    this.setState({name: '', email: '', message: ''})
+    this.setState({name: '', email: '', message: '', phone: ''})
  }
 
 }

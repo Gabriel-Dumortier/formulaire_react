@@ -36,13 +36,13 @@ router.post('/send', (req, res, next) => {
     to: 'dumortier.g@sip.be',  // Change to email address that you want to receive messages on
     subject: 'New Message from Contact Form',
     text: content,
-    attachments: [
+    /*attachments: [
       {
         filename: data.title+".jpg",
         contentType:'image/jpg',
         content: new Buffer.from(req.body.image.split('base64,')[1], "base64"),
       }
-    ]
+    ]*/
   }
 
   transporter.sendMail(mail, (err, data) => {
