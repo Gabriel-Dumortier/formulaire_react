@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="file-input" multiple accept="image/jpeg, image/png">
+    <button id="upload-button">Upload File</button>
+
+    <script>
+        document.querySelector('#upload-button').addEventListener('click', function() {
+            
+            if(document.querySelector('#file-input').files.length == 0) {
+                alert('No file selected');
+                return;
+            }
+
+            let file = document.querySelector('#file-input').files[0];
+            let mime_type = ['image/jpeg', 'image/png'];
+
+            if(mime_type.indexOf(file.type) == -1) {
+                alert('Incorrect file type');
+                return;
+            }
+
+            if(file.size > 2*1024*1024) {
+                alert('Exceeded 2MB');
+                return;
+            }
+
+            alert('You have chosen the file' + file.name);
+
+
+            let data = new FormData();
+
+            data.append('file', document.querySelector('#file-input').files[0]);
+
+            let request = new XMLHttpRequest();
+            
+        });
+    </script>
+</body>
+</html>
