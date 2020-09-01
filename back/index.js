@@ -31,6 +31,8 @@ router.post('/send', (req, res, next) => {
   var phone = req.body.phone
   var content = `name: ${name} \n email: ${email} \n message: ${message} \n téléphone: ${phone}`
 
+  console.log('inside post backend')
+
   var mail = {
     from: email,
     to: 'dumortier.g@sip.be',  // Change to email address that you want to receive messages on
@@ -59,9 +61,10 @@ router.post('/send', (req, res, next) => {
 })
 
 const app = express()
-app.use(bodyParser.json({ limit: '10mb', extended: true }))
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
+const path = require('path');
+const port = process.env.PORT || 3002;
+/*app.use(bodyParser.json({ limit: '10mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))*/
 app.use(cors())
-app.use(express.json())
 app.use('/', router)
-app.listen(3002)
+app.listen(port)

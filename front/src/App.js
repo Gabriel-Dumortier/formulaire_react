@@ -117,6 +117,8 @@ setupReader() {
   handleSubmit(e){
     e.preventDefault();
 
+    console.log('Request submited...')
+
     axios({
       method: "POST", 
       url:"http://dev21.honet.be:3002/send", 
